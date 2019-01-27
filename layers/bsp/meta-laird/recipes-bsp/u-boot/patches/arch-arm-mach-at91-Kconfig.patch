@@ -1,0 +1,18 @@
+diff --git a/arch/arm/mach-at91/Kconfig b/arch/arm/mach-at91/Kconfig
+index ce6be3829a..648603eca0 100644
+--- a/arch/arm/mach-at91/Kconfig
++++ b/arch/arm/mach-at91/Kconfig
+@@ -245,11 +245,12 @@ config TARGET_WB45N
+ 
+ config TARGET_WB50N
+ 	bool "Support Laird WB50N"
++	select SAMA5D3
+ 	select BOARD_LATE_INIT
+-	select CPU_V7A
+ 	select SUPPORT_SPL
+ 	select BOARD_EARLY_INIT_F
+ 
++
+ endchoice
+ 
+ config SYS_SOC

@@ -1,0 +1,23 @@
+diff --git a/driver/board_hw_info.c b/driver/board_hw_info.c
+index ebd77db..5978fc0 100644
+--- a/driver/board_hw_info.c
++++ b/driver/board_hw_info.c
+@@ -473,6 +473,9 @@ static unsigned int set_default_sn(void)
+ #elif defined(CONFIG_SAMA5D2_XPLAINED)
+ 	board_id_ek = BOARD_ID_SAMA5D2_XULT;
+ 	vendor_ek = VENDOR_ATMEL_RFO;
++#elif defined(CONFIG_WB50N)
++	board_id_ek = BOARD_ID_WB50N;
++	vendor_ek = VENDOR_LAIRD;
+ #else
+ #error "OneWire: No defined board"
+ #endif
+@@ -507,7 +510,7 @@ static unsigned int set_default_rev(void)
+ 	rev_id_dm = '0';
+ 	rev_id_ek = '0';
+ 
+-#elif defined(CONFIG_SAMA5D3XEK) || defined(CONFIG_SAMA5D3X_CMP)
++#elif defined(CONFIG_SAMA5D3XEK) || defined(CONFIG_SAMA5D3X_CMP) || defined(CONFIG_WB50N)
+ 
+ 	/* sama5d3xek
+ 	 * CPU Module: 'D', '4'
