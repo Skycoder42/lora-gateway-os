@@ -5,10 +5,10 @@ LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=22af7693d7b76ef0fc76161c4be76c45"
 DEPENDS = "lora-gateway"
 RDEPENDS_${PN} = "iproute2"
-PR = "r8"
+PR = "r9"
 
 SRCREV = "v${PV}"
-SRC_URI = "git://github.com/Lora-net/packet_forwarder.git;protocol=git \
+SRC_URI = "git://github.com/Skycoder42/packet_forwarder.git;protocol=git \
            file://lora-packet-forwarder.init \
            file://lora-packet-forwarder.monit \
            file://lora-packet-forwarder.default \
