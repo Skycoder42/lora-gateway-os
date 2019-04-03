@@ -6,6 +6,7 @@ DAEMON_BIN=/opt/$NAME/lora_pkt_fwd
 DAEMON_CONF=/etc/$NAME
 DAEMON_PID=/var/run/$NAME.pid
 PF_RESET=/tmp/lora-packet-forwarder-reset
+GPS_SPOOFER_BIN=/opt/u-blox-pty/u-blox-pty.sh
 
 # load defaults file
 if [ -f /etc/default/$NAME ]; then
@@ -19,7 +20,7 @@ if [ ! -f $DAEMON_CONF/global_conf.json ]; then
 fi
 
 function wait_gpio {
-    sleep 0.1
+    sleep 1
 }
 
 function do_reset {
@@ -30,6 +31,10 @@ function do_reset {
     if [ -f $PF_RESET ]; then
         return;
     fi
+
+    echo "Starting spoofer: $GPS_SPOOFER_BIN"
+    $GPS_SPOOFER_BIN &
+    disown
 
     echo "Resetting concentrator board using pin $CONCENTRATOR_RESET_PIN"
     echo $CONCENTRATOR_RESET_PIN > /sys/class/gpio/export; wait_gpio
