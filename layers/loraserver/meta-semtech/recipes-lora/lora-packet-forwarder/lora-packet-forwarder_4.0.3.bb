@@ -5,7 +5,7 @@ LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=22af7693d7b76ef0fc76161c4be76c45"
 DEPENDS = "lora-gateway"
 RDEPENDS_${PN} = "iproute2"
-PR = "r9"
+PR = "r10"
 
 SRCREV = "v${PV}"
 SRC_URI = "git://github.com/Skycoder42/packet_forwarder.git;protocol=git \
@@ -63,7 +63,7 @@ do_install() {
     install -m 0755 ${WORKDIR}/u-blox-pty.sh ${D}${UBLOX_DIR}/u-blox-pty.sh
 }
 
-FILES_${PN} += "${LORA_DIR}"
+FILES_${PN} += "${LORA_DIR} ${UBLOX_DIR}"
 FILES_${PN}-dbg += "${LORA_DIR}/.debug ${LORA_DIR}/utils/.debug"
 
 INSANE_SKIP_${PN} = "ldflags"
