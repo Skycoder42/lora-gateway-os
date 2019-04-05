@@ -100,7 +100,7 @@ source oe-init-build-env /build/ /lora-gateway-os/bitbake/
 
 
 # build the lora-gateway-os-base image
-bitbake lora-gateway-os-base
+bitbake lora-gateway-os-full
 ```
 
 #### Configuration

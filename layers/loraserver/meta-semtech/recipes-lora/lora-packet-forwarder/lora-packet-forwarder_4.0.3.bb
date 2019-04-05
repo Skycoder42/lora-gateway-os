@@ -5,13 +5,15 @@ LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=22af7693d7b76ef0fc76161c4be76c45"
 DEPENDS = "lora-gateway"
 RDEPENDS_${PN} = "iproute2"
-PR = "r8"
+PR = "r10"
 
 SRCREV = "v${PV}"
-SRC_URI = "git://github.com/Lora-net/packet_forwarder.git;protocol=git \
+SRC_URI = "git://github.com/Skycoder42/packet_forwarder.git;protocol=git \
            file://lora-packet-forwarder.init \
            file://lora-packet-forwarder.monit \
            file://lora-packet-forwarder.default \
+           file://u-blox-pty.py \
+           file://u-blox-pty.sh \
 "
 
 inherit update-rc.d
@@ -21,6 +23,7 @@ INITSCRIPT_PARAMS = "defaults"
 
 S = "${WORKDIR}/git"
 LORA_DIR = "/opt/lora-packet-forwarder"
+UBLOX_DIR = "/opt/u-blox-pty"
 LORA_CONF_DIR = "${sysconfdir}/lora-packet-forwarder"
 
 export LGW_PATH = "${STAGING_LIBDIR}/lora"
@@ -54,9 +57,13 @@ do_install() {
     install -d ${D}${LORA_CONF_DIR}
     install -d ${D}${LORA_CONF_DIR}/semtech
     install -m 0644 ${S}/lora_pkt_fwd/cfg/global_conf.json.* ${D}${LORA_CONF_DIR}/semtech
+    
+    install -d ${D}${UBLOX_DIR}
+    install -m 0755 ${WORKDIR}/u-blox-pty.py ${D}${UBLOX_DIR}/u-blox-pty.py
+    install -m 0755 ${WORKDIR}/u-blox-pty.sh ${D}${UBLOX_DIR}/u-blox-pty.sh
 }
 
-FILES_${PN} += "${LORA_DIR}"
+FILES_${PN} += "${LORA_DIR} ${UBLOX_DIR}"
 FILES_${PN}-dbg += "${LORA_DIR}/.debug ${LORA_DIR}/utils/.debug"
 
 INSANE_SKIP_${PN} = "ldflags"
