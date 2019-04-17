@@ -1,14 +1,14 @@
 DESCRIPTION = "Driver/HAL to build a gateway using a concentrator board based on Semtech SX1301"
-HOMEPAGE = "https://github.com/Lora-net/lora_gateway"
+HOMEPAGE = "https://github.com/Skycoder42/lora_gateway"
 PRIORITY = "optional"
 LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a2bdef95625509f821ba00460e3ae0eb"
 PR = "r6"
 
-SRC_URI = "git://github.com/Lora-net/lora_gateway.git;protocol=git \
+SRC_URI = "git://github.com/Skycoder42/lora_gateway.git;protocol=git \
            file://library.cfg \
 "
-SRCREV = "a955619271b5d0a46d32e08150acfbc1eed183b7"
+SRCREV = "v${PV}"
 
 S = "${WORKDIR}/git"
 CFLAGS += "-Iinc -I."
