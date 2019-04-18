@@ -5,7 +5,7 @@ LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a2bdef95625509f821ba00460e3ae0eb"
 PR = "r6"
 
-SRC_URI = "git://github.com/Skycoder42/lora_gateway.git;protocol=git \
+SRC_URI = "git://github.com/Skycoder42/lora_gateway.git;protocol=git;branch=ubs-gps \
            file://library.cfg \
 "
 SRCREV = "v${PV}"
