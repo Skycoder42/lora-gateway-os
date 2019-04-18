@@ -5,7 +5,7 @@ LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=22af7693d7b76ef0fc76161c4be76c45"
 DEPENDS = "lora-gateway"
 RDEPENDS_${PN} = "iproute2"
-PR = "r10"
+PR = "r14"
 
 SRCREV = "v${PV}"
 SRC_URI = "git://github.com/Skycoder42/packet_forwarder.git;protocol=git \
